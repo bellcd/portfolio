@@ -1,7 +1,21 @@
 import React from 'react';
 import Card from './card';
 
+import { useStaticQuery, graphql } from 'gatsby';
+
 export default () => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  );
+
   const grid = [1, 2, 3, 4, 5, 6, 7, 8].map((card, i) => {
     return <Card key={i} card={card}></Card>;
   });
