@@ -15,10 +15,6 @@ export default () => {
   return (
     <nav>
       <ul>
-        {/* <li>About</li>
-        <li>Apps</li>
-        <li>Contact</li>
-        <li>Resume</li> */}
         {links}
       </ul>
     </nav>
