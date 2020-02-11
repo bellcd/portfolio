@@ -1,16 +1,9 @@
 import React from 'react';
-
-const NavLink = ({ name }) => {
-  return (
-    <a href={`#${name.toLowerCase()}`}>
-      <li>{name}</li>
-    </a>
-  );
-};
+import { Link } from 'gatsby';
 
 export default () => {
   const links = ['About', 'Apps', 'Contact', 'Resume'].map((name, i) => {
-    return <NavLink name={name} key={i} />;
+    return <Link to={`/${name.toLowerCase()}`} key={i}>{name}</Link>
   });
   return (
     <nav>
