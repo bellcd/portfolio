@@ -4,19 +4,98 @@ import Card from './card';
 import { useStaticQuery, graphql } from 'gatsby';
 
 export default () => {
+  // TODO: quite WET ...
   const data = useStaticQuery(
     graphql`
       query {
         site {
-          siteMetadata {
-            title
+          userData {
+            apps {
+              flexAndTransition {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              robinHoodStockDetailPageClone {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              faceDetection {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              ticTacToe {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              whatShouldIEat {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              javaScriptCalculator {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              randomUserGenerator {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              spicesImageMap {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              gradientBackgroundGenerator {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              },
+              theOtisBuilding {
+                title,
+                description,
+                externalUrl,
+                imagePath,
+                altTagText,
+              }
+            }
           }
         }
       }
     `
   );
 
-  const grid = [1, 2, 3, 4, 5, 6, 7, 8].map((card, i) => {
+  const arr = [];
+  const appData = data.site.userData.apps
+  for (let key in appData) {
+    arr.push(appData[key]);
+  }
+
+
+  const grid = arr.map((card, i) => {
     return <Card key={i} card={card}></Card>;
   });
   return (
