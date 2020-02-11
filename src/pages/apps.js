@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '../components/header';
+import Layout from '../components/layout';
+// import Header from '../components/header';
 import Card from '../components/card';
 
 import { graphql } from 'gatsby';
@@ -15,14 +16,13 @@ export default ({ data }) => {
     return <Card key={i} card={card}></Card>;
   });
   return (
-    <>
-      <Header></Header>
+    <Layout>
       <div id="apps">
         <div className="apps-grid">
           {grid}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 
