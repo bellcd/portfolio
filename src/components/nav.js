@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavLink = ({ name }) => {
   return (
-    <a href={`#${name}`}>
+    <a href={`#${name.toLowerCase()}`}>
       <li>{name}</li>
     </a>
   );
