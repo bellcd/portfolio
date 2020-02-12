@@ -1,18 +1,12 @@
 import React from 'react';
 import Layout from '../components/layout';
-// import Header from '../components/header';
 import Card from '../components/card';
-
 import { graphql } from 'gatsby';
 
 export default ({ data }) => {
-  const arr = [];
-  const appData = data.site.siteMetadata.userData.apps
-  for (let key in appData) {
-    arr.push(appData[key]);
-  }
+  const { apps } = data.allDataJson.edges[0].node;
 
-  const grid = arr.map((card, i) => {
+  const grid = apps.map((card, i) => {
     return <Card key={i} card={card}></Card>;
   });
   return (
@@ -26,86 +20,105 @@ export default ({ data }) => {
   );
 }
 
-// TODO: quite WET ...
 export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        userData {
+  query MyQuery {
+    allDataJson {
+      edges {
+        node {
           apps {
-            flexAndTransition {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            robinHoodStockDetailPageClone {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            faceDetection {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            ticTacToe {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            whatShouldIEat {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            javaScriptCalculator {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            randomUserGenerator {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            spicesImageMap {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            gradientBackgroundGenerator {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            },
-            theOtisBuilding {
-              title,
-              description,
-              externalUrl,
-              imagePath,
-              altTagText,
-            }
+            title
+            description
+            externalUrl
+            imagePath
+            altTagText
           }
         }
       }
     }
   }
 `;
+
+
+// // TODO: quite WET ...
+// export const query = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         userData {
+//           apps {
+//             flexAndTransition {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             robinHoodStockDetailPageClone {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             faceDetection {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             ticTacToe {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             whatShouldIEat {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             javaScriptCalculator {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             randomUserGenerator {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             spicesImageMap {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             gradientBackgroundGenerator {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             },
+//             theOtisBuilding {
+//               title,
+//               description,
+//               externalUrl,
+//               imagePath,
+//               altTagText,
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
